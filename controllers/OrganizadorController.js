@@ -1,14 +1,19 @@
-var Aluno = require("../models/Aluno");
-var Organizador = require("../models/Organizador");
-var PasswordToken = require("../models/PasswordToken");
-var jwt = require("jsonwebtoken");
+let Aluno = require("../models/Aluno");
+let Organizador = require("../models/Organizador");
+let PasswordToken = require("../models/PasswordToken");
+let jwt = require("jsonwebtoken");
 const dayjs = require("dayjs");
 
-var secret = "adsuasgdhjasgdhjdgahjsg12hj3eg12hj3g12hj3g12hj3g123";
+let secret = "adsuasgdhjasgdhjdgahjsg12hj3eg12hj3g12hj3g12hj3g123";
 
-var bcrypt = require("bcrypt");
+let bcrypt = require("bcrypt");
 
 class OrganizadorController {
+  //Busca todos os organizadores
+  async findAll(req, res) {
+    let organizadores = await Organizador.findAll();
+    res.json(organizadores);
+  }
   //Cadastra Organizador
   async create(req, res) {
     let nome = req.body.nome;

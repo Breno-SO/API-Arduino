@@ -6,9 +6,7 @@ class Organizador {
   //Busca todos os registros na tabela
   async findAll() {
     try {
-      var result = await knex
-        .select(["idorganizador", "Nome", "IdCartao"])
-        .table("organizador");
+      var result = await knex.select("*").table("organizador");
       return result;
     } catch (err) {
       console.log(err);
